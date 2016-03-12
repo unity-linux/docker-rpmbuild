@@ -1,3 +1,27 @@
+docker-rpmbuilder is used to build RPMs in docker using
+[mock](https://fedoraproject.org/wiki/Mock) with a CI tool such as Travis. It
+will easily integrate with your build system if you keep your rpmbuild directory
+in a VCS.
+
+
+Directions
+---
+```
+---
+sudo: required
+language: bash
+services:
+  - docker
+before_install:
+  - docker pull mmckinst/rpmbuilder
+env:
+  - MOCK_CONFIG="epel-6-i386"
+  - MOCK_CONFIG="epel-6-x86_64"
+  - MOCK_CONFIG="epel-7-x86_64"
+script:
+  - docker run -e MOCK_CONFIG="${MOCK_CONFIG}" -v "$(pwd):/rpmbuild" --privileged=true mmckinst/rpmbuilder
+```
+
 Todo
 ---
 * get custom [sitewide config](https://fedoraproject.org/wiki/Mock#Generate_custom_config_file) stored in gitrepo at .config/builder.cfg or .config/mock.cfg to work
