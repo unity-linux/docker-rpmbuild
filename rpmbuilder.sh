@@ -6,6 +6,13 @@ set -u
 : "${MOCK_CONFIG:=$(basename $(readlink /etc/mock/default.cfg) .cfg)}"
 : "${MOCK_CLI_OPTIONS:=}"
 
+
+# The Dockerfile adds a user named 'builder'. Right now that UID is 1000 when
+# the container is created. The CI tool might run under a different UID, for
+# example 500. When the CI tool shares the rpmbuild directory to the docker
+# container, the builder user won't be able to read the files due to it being
+# UID 1000 while the files are UID 500. So we change the UID of the 'builder'
+# user to match the directory shared.
 rpmbuild_dir_uid="$(stat -c '%u' /rpmbuild/)"
 rpmbuild_dir_gid="$(stat -c '%g' /rpmbuild/)"
 builder_uid="$(id -u builder)"
