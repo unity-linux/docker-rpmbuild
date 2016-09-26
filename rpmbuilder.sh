@@ -26,7 +26,7 @@ if [[ $rpmbuild_dir_gid != $builder_gid ]]; then
 fi
 
 if ! grep -q '%_topdir /rpmbuild/' ~/.rpmmacros; then
-    su builder -l -c "echo '%_topdir /rpmbuild/ # docker-rpmbuilder' >> ~/.rpmmacros"
+    su builder -l -c "echo '%_topdir /rpmbuild/' >> ~/.rpmmacros"
 fi
 su builder -l -c "rpmdev-setuptree"
 su builder -l -c "spectool -R -g  /rpmbuild/SPECS/*spec"
