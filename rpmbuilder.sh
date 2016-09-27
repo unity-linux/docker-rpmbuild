@@ -7,6 +7,8 @@ set -u
 : "${MOCK_CLI_OPTIONS:=}"
 
 
+cp -v mock/* /etc/mock/ 2>/dev/null
+
 # The Dockerfile adds a user named 'builder'. Right now that UID is 1000 when
 # the container is created. The CI tool might run under a different UID, for
 # example 500. When the CI tool shares the rpmbuild directory to the docker
