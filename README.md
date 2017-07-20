@@ -13,19 +13,13 @@ language: bash
 services:
   - docker
 before_install:
-  - docker pull mmckinst/rpmbuilder
+  - docker pull jmiahman/rpmbuilder
 env:
-  - MOCK_CONFIG="epel-6-i386"
-  - MOCK_CONFIG="epel-6-x86_64"
-  - MOCK_CONFIG="epel-7-x86_64"
+  - MOCK_CONFIG="mageia-6-i386"
+  - MOCK_CONFIG="mageia-6-x86_64"
 script:
   - docker run -e MOCK_CONFIG="${MOCK_CONFIG}" -v "$(pwd):/rpmbuild" --privileged=true mmckinst/rpmbuilder
 ```
-
-Todo
----
-* get custom [sitewide config](https://fedoraproject.org/wiki/Mock#Generate_custom_config_file) stored in gitrepo at .config/builder.cfg or .config/mock.cfg to work
-* test using custom build config
 
 License
 ---
