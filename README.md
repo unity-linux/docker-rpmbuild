@@ -18,7 +18,7 @@ env:
   - MOCK_CONFIG="mageia-6-i386"
   - MOCK_CONFIG="mageia-6-x86_64"
 script:
-  - docker run -e MOCK_CONFIG="${MOCK_CONFIG}" -v "$(pwd):/rpmbuild" --privileged=true mmckinst/rpmbuilder
+  - docker run -e MOCK_CONFIG="${MOCK_CONFIG}" -v "$(pwd):/rpmbuild" --privileged=true jmiahman/rpmbuilder
 ```
 
 License
