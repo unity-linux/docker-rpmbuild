@@ -1,4 +1,4 @@
-This was a docker imaged used to just build rpms for Mageia, but since it has turned into a base image to build Unity-Linux. Though by every means still a work in progress. At this time this image is what is use to build and test [mklivecd](https://github.com/unity-linux/mklivecd) with a CI tool such as Travis along with building various other packages by similiar means as well.
+This was a docker imaged used to just build rpms for Mageia, but since it has turned into a base image to build Unity-Linux. Though by every means still a work in progress, this image is what is used to build and test [mklivecd](https://github.com/unity-linux/mklivecd) with Travis-CI along with building various other packages by similiar means as well.
 
 
 Directions
