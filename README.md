@@ -1,30 +1,17 @@
-docker-rpmbuilder is used to build RPMs in docker using
-[mock](https://fedoraproject.org/wiki/Mock) with a CI tool such as Travis. It
-will easily integrate with your build system if you keep your rpmbuild directory
-in a VCS.
+This was a docker imaged used to just build rpms for Mageia, but since it has turned into a base image to build Unity-Linux. Though by every means still a work in progress. At this time this image is what is use to build and test [mklivecd](https://github.com/unity-linux/mklivecd) with a CI tool such as Travis along with building various other packages by similiar means as well.
 
 
 Directions
 ---
 ```
 ---
-sudo: required
-language: bash
-services:
-  - docker
-before_install:
-  - docker pull jmiahman/rpmbuilder
-env:
-  - MOCK_CONFIG="mageia-6-i386"
-  - MOCK_CONFIG="mageia-6-x86_64"
-script:
-  - docker run -e MOCK_CONFIG="${MOCK_CONFIG}" -v "$(pwd):/rpmbuild" --privileged=true jmiahman/rpmbuilder
+None yet..
 ```
 
 License
 ---
 ```
-Copyright (c) 2016 Mark McKinstry
+Copyright (c) 2017 Jeremiah Summers
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
