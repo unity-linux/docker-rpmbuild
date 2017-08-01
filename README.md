@@ -5,7 +5,8 @@ Directions
 ---
 ```
 ---
-None yet..
+For now we just run SystemD in the container as a daemon and build from there, ie:
+docker run --privileged=true -d -v "$(pwd):/builddir" -v "/dev:/dev" -v "/sys/fs/cgroup:/sys/fs/cgroup:ro" <container>
 ```
 
 License
