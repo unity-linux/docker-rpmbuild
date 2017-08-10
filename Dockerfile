@@ -1,6 +1,6 @@
 FROM mageia:6
 MAINTAINER JMiahMan <JMiahMan@Unity-Linux.org>
-RUN dnf -y install kernel-latest
+RUN dnf -y install kernel-desktop-latest
 RUN rpm -e --nodeps systemd; dnf clean all 
 RUN dnf -y install systemd
 RUN dnf -y install dnf-plugins-core mock rpmdevtools rpm-sign cracklib-dicts rpmlint intltool && dnf clean all
