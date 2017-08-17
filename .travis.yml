@@ -6,8 +6,9 @@ install: true
 
 script:
   - docker build .
-  - export CID=$(docker ps -l | awk '{print $1}' | grep -v -m1 'CONTAINER')
-  - docker tag $CID jmiahman/mageia-rpmbuilder
+  - export DID=$(docker images -a | grep -m1 mageia-rpmbuilder | awk '{print $3}')
+  - echo $DID
+  - docker tag $DID jmiahman/mageia-rpmbuilder
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
