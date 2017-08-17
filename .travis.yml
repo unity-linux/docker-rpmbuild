@@ -1,0 +1,16 @@
+sudo: required
+language: bash
+services:
+  - docker
+install: true
+
+script:
+  - docker build .
+  - export CID=$(docker ps -l | awk '{print $1}' | grep -v -m1 'CONTAINER')
+  - docker tag $CID jmiahman/mageia-rpmbuilder
+
+after_success:
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+    docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
+    docker jmiahman/mageia-rpmbuilder:latest;
+    fi
