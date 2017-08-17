@@ -6,7 +6,7 @@ install: true
 
 script:
   - docker build .
-  - export DID=$(docker images -a | grep -m1 mageia-rpmbuilder | awk '{print $3}')
+  - export DID=$(docker images -a| awk '{print $3}' | grep ".[0-9].\|.[a-z]." -m1)
   - echo $DID
   - docker tag $DID jmiahman/mageia-rpmbuilder
 
