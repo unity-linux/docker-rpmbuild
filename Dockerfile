@@ -1,11 +1,11 @@
 FROM mageia:6
 MAINTAINER JMiahMan <JMiahMan@Unity-Linux.org>
-RUN dnf -y install --setopt=install_weak_deps=False kernel-desktop-latest kernel-desktop-devel-latest
+RUN dnf copr enable jmiahman/Unity-Linux -y
 RUN dnf -y remove $(rpm -qa | sort | grep -m1 kernel-desktop)
+RUN dnf -y install --setopt=install_weak_deps=False kernel-unity-desktop-latest kernel-unity-desktop-devel-latest
 RUN rpm -e --nodeps systemd; dnf clean all 
 RUN dnf -y install --setopt=install_weak_deps=False systemd
 RUN dnf -y install --setopt=install_weak_deps=False dnf-plugins-core mock rpmdevtools rpm-sign cracklib-dicts rpmlint intltool
-RUN dnf copr enable jmiahman/Unity-Linux -y
 RUN dnf update -y
 RUN dnf clean all
 RUN useradd builder -G mock -M -d /rpmbuild
