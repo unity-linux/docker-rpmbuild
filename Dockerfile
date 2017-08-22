@@ -9,7 +9,6 @@ RUN dnf -y install --setopt=install_weak_deps=False dnf-plugins-core mock rpmdev
 RUN dnf update -y
 RUN dnf clean all
 RUN useradd builder -G mock -M -d /rpmbuild
-RUN useradd live
 RUN echo "config_opts['cache_topdir'] = '/rpmbuild/cache'" >> /etc/mock/site-defaults.cfg
 RUN echo "root:Unity!" | chpasswd
 RUN passwd -d root
