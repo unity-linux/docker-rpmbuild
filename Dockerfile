@@ -5,7 +5,7 @@ RUN dnf copr enable jmiahman/Unity-Linux -y
 RUN dnf -y install --setopt=install_weak_deps=False kernel-unity-desktop-latest kernel-unity-desktop-devel-latest
 RUN rpm -e --nodeps systemd; dnf clean all 
 RUN dnf -y install --setopt=install_weak_deps=False systemd
-RUN dnf -y install --setopt=install_weak_deps=False dnf-plugins-core mock rpmdevtools rpm-sign cracklib-dicts rpmlint intltool
+RUN dnf -y install --setopt=install_weak_deps=False wget dnf-plugins-core mock rpmdevtools rpm-sign cracklib-dicts rpmlint intltool
 RUN dnf update -y
 RUN dnf clean all
 RUN useradd builder -G mock -M -d /rpmbuild
