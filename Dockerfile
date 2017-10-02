@@ -13,6 +13,8 @@ RUN useradd builder -G mock -M -d /rpmbuild
 RUN echo "config_opts['cache_topdir'] = '/rpmbuild/cache'" >> /etc/mock/site-defaults.cfg
 RUN echo "root:Unity!" | chpasswd
 RUN passwd -d root
+ADD rpmbuilder.sh /usr/bin/rpmbuilder
+RUN chmod +x /usr/bin/rpmbuilder
 VOLUME [ "/rpmbuild" ]
 VOLUME [ "/sys/fs/cgroup" ]
 CMD ["/usr/sbin/init"]
