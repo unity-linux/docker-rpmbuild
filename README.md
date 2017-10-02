@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/unity-linux/docker-unitylinux.svg?branch=master)](https://travis-ci.org/unity-linux/docker-unitylinux)
+
 This was a docker imaged used to just build rpms for Mageia, but since it has turned into a base image to build Unity-Linux. Though by every means still a work in progress, this image is what is used to build and test [mklivecd](https://github.com/unity-linux/mklivecd) with Travis-CI along with building various other packages by similiar means as well.
 
 
