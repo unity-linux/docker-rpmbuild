@@ -1,5 +1,6 @@
 FROM mageia:6
 MAINTAINER JMiahMan <JMiahMan@Unity-Linux.org>
+RUN dnf config-manager --set-enabled mageia-x86_64-nonfree updates-x86_64-nonfree
 RUN dnf clean all
 RUN dnf update -y
 RUN dnf -y install 'dnf-command(copr)'
