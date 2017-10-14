@@ -9,7 +9,7 @@ RUN dnf copr enable jmiahman/Unity-Linux -y
 RUN dnf -y install --setopt=install_weak_deps=False kernel-firmware kernel-unity-desktop-latest kernel-unity-desktop-devel-latest
 RUN rpm -e --nodeps systemd; dnf clean all 
 RUN dnf -y install --setopt=install_weak_deps=False systemd
-RUN dnf -y install --setopt=install_weak_deps=False wget dnf-plugins-core mock rpmdevtools rpm-sign cracklib-dicts rpmlint intltool
+RUN dnf -y install --setopt=install_weak_deps=False acpi acpid wget dnf-plugins-core mock rpmdevtools rpm-sign cracklib-dicts rpmlint intltool
 RUN dnf clean all
 RUN useradd builder -G mock -M -d /rpmbuild
 RUN echo "config_opts['cache_topdir'] = '/rpmbuild/cache'" >> /etc/mock/site-defaults.cfg
