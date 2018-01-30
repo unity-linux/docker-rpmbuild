@@ -1,4 +1,4 @@
-FROM mageia:6
+FROM jmiahman:cauldron
 MAINTAINER JMiahMan <JMiahMan@Unity-Linux.org>
 RUN dnf -y install 'dnf-command(config-manager)'
 RUN dnf config-manager --set-enabled mageia-x86_64-nonfree updates-x86_64-nonfree
