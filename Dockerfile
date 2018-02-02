@@ -9,7 +9,7 @@ RUN dnf copr enable jmiahman/Unity-Linux -y
 #RUN dnf -y install --setopt=install_weak_deps=False kernel-firmware kernel-unity-desktop-latest kernel-unity-desktop-devel-latest basesystem-minimal 
 RUN dnf -y install --setopt=install_weak_deps=False kernel-firmware basesystem-minimal 
 RUN rpm -e --nodeps systemd; dnf clean all 
-RUN dnf -y install --setopt=install_weak_deps=False systemd 
+RUN dnf -y install systemd 
 RUN systemctl enable systemd-journald.service
 RUN dnf -y install --setopt=install_weak_deps=False acpi acpid dhcp-client wget dnf-plugins-core mock rpmdevtools rpm-sign cracklib-dicts rpmlint intltool
 RUN dnf clean all
