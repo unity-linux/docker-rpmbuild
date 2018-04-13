@@ -3,6 +3,9 @@ MAINTAINER JMiahMan <JMiahMan@Unity-Linux.org>
 RUN dnf -y install 'dnf-command(config-manager)'
 RUN dnf config-manager --set-enabled cauldron-x86_64-nonfree cauldron-x86_64-nonfree
 RUN dnf clean all
+RUN mkdir -p /etc/yum.repos.d/
+RUN wget -O /etc/yum.repos.d/Unity-Linux-mageia.repo https://raw.githubusercontent.com/unity-linux/unity-repos/master/Unity-Linux-mageia.repo
+RUN wget -O /etc/pki/rpm-gpg/RPM-GPG-KEY-Unity https://raw.githubusercontent.com/unity-linux/unity-repos/master/RPM-GPG-KEY-Unity
 RUN dnf update -y
 RUN dnf -y install 'dnf-command(copr)'
 RUN dnf copr enable jmiahman/Unity-Linux -y
