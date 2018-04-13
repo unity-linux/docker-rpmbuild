@@ -1,5 +1,6 @@
 FROM jmiahman/cauldron
 MAINTAINER JMiahMan <JMiahMan@Unity-Linux.org>
+RUN dnf config-manager --set-disabled mageia-x86_64 --set-disabled updates-x86_64
 RUN dnf -y install 'dnf-command(config-manager)'
 RUN dnf config-manager --set-enabled cauldron-x86_64-nonfree cauldron-x86_64-nonfree
 RUN dnf clean all
