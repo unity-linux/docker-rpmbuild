@@ -39,7 +39,13 @@ if ! grep -q '%_topdir /rpmbuild/' ~/.rpmmacros; then
     su builder -l -c "echo '%_topdir /rpmbuild/' >> ~/.rpmmacros"
 fi
 su builder -l -c "rpmdev-setuptree"
-su builder -l -c "rpmbuild \""--undefine=_disable_source_fetch\"" \""--define\"" \""_sourcedir\ /rpmbuild\"" \""--define\"" \""_topdir\ /rpmbuild\"" -bs *.spec"
+if [[ $1 == "ba" ]]; then
+	su builder -l -c "rpmbuild \""--undefine=_disable_source_fetch\"" \""--define\"" \""_sourcedir\ /rpmbuild\"" \""--define\"" \""_topdir\ /rpmbuild\"" -ba *.spec"
+elif [[ $1 == "bb" ]]; then
+	su builder -l -c "rpmbuild \""--undefine=_disable_source_fetch\"" \""--define\"" \""_sourcedir\ /rpmbuild\"" \""--define\"" \""_topdir\ /rpmbuild\"" -bb *.spec"
+else
+	su builder -l -c "rpmbuild \""--undefine=_disable_source_fetch\"" \""--define\"" \""_sourcedir\ /rpmbuild\"" \""--define\"" \""_topdir\ /rpmbuild\"" -bs *.spec"
+fi
 su builder -l -c "mock --old-chroot -r ${MOCK_CONFIG} --resultdir=/rpmbuild/${MOCK_CONFIG} ${MOCK_CLI_OPTIONS} --rebuild /rpmbuild/SRPMS/*.src.rpm"
 su builder -l -c "sed -i '/%_topdir \/rpmbuild\/ # docker-rpmbuilder/d' ~/.rpmmacros"
 if [ $(find /rpmbuild -name '*.src.rpm'| tr " " "\n"|wc -l) -gt "1" ]; then rm -f /rpmbuild/*/SRPMS/*.src.rpm; fi
