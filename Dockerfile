@@ -7,10 +7,8 @@ RUN dnf clean all
 RUN mkdir -p /etc/yum.repos.d/
 ADD https://raw.githubusercontent.com/unity-linux/unity-repos/master/Unity-Linux-mageia.repo /etc/yum.repos.d/Unity-Linux-mageia.repo
 ADD https://raw.githubusercontent.com/unity-linux/unity-repos/master/RPM-GPG-KEY-Unity /etc/pki/rpm-gpg/RPM-GPG-KEY-Unity
+RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-Unity
 RUN dnf update -y
-RUN dnf -y install 'dnf-command(copr)'
-RUN dnf copr enable jmiahman/Unity-Linux -y
-#RUN dnf -y install --setopt=install_weak_deps=False kernel-firmware kernel-unity-desktop-latest kernel-unity-desktop-devel-latest basesystem-minimal 
 RUN dnf -y install --setopt=install_weak_deps=False kernel-firmware basesystem-minimal 
 RUN dnf -y install --setopt=install_weak_deps=False acpi acpid dhcp-client wget dnf-plugins-core mock rpmdevtools rpm-sign cracklib-dicts rpmlint intltool
 RUN dnf clean all
