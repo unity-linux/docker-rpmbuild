@@ -1,6 +1,6 @@
 FROM jmiahman/cauldron-i586
 MAINTAINER JMiahMan <JMiahMan@Unity-Linux.org>
-RUN rm -rf /var/lib/rpm/__db.00*
+RUN rm -rf /var/lib/rpm
 RUN rpm --rebuilddb
 RUN dnf -y install 'dnf-command(config-manager)'
 RUN dnf config-manager --set-disabled mageia-i586 --set-disabled updates-i586
