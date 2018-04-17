@@ -3,15 +3,17 @@ language: bash
 services:
   - docker
 install: true
-
+env:
+- ARCH="x86_64"
+- ARCH="i586"
 script:
-  - docker build .
+  - docker build -t jmiahman/mageia-rpmbuilder-${ARCH} -f Dockerfile-${ARCH} .
   - export DID=$(docker images -a| awk '{print $3}' | grep ".[0-9].\|.[a-z]." -m1)
   - echo $DID
-  - docker tag $DID jmiahman/mageia-rpmbuilder
+  - docker tag $DID jmiahman/mageia-rpmbuilder-${ARCH}
 
 after_success:
   - if [ "$TRAVIS_BRANCH" == "master" ]; then
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD";
-    docker push jmiahman/mageia-rpmbuilder:latest;
+    docker push jmiahman/mageia-rpmbuilder-${ARCH}:latest;
     fi
