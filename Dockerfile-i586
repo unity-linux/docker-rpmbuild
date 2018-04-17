@@ -1,4 +1,4 @@
-FROM jmiahman/cauldron
+FROM jmiahman/cauldron-i586
 MAINTAINER JMiahMan <JMiahMan@Unity-Linux.org>
 RUN dnf -y install 'dnf-command(config-manager)'
 RUN dnf config-manager --set-disabled mageia-i586 --set-disabled updates-i586
