@@ -1,6 +1,6 @@
 FROM jmiahman/cauldron-i586
 MAINTAINER JMiahMan <JMiahMan@Unity-Linux.org>
-RUN sed -i 's!gpgcheck=1!gpgcheck=0!g' /etc/yum.repos.d/cauldron*.repo
+RUN sed -i 's!gpgcheck=1!gpgcheck=0!g' /etc/yum.repos.d/*.repo
 RUN dnf -y install 'dnf-command(config-manager)'
 RUN dnf config-manager --set-disabled mageia-i586 --set-disabled updates-i586
 RUN dnf config-manager --set-enabled cauldron-i586-nonfree cauldron-i586-nonfree
