@@ -1,5 +1,6 @@
 FROM jmiahman/cauldron-x86_64
 MAINTAINER JMiahMan <JMiahMan@Unity-Linux.org>
+RUN sed -i "s%gpgcheck=1%gpgcheck=0%g" /etc/yum.repos.d/*.repo
 RUN dnf -y install 'dnf-command(config-manager)'
 RUN dnf config-manager --set-disabled mageia-x86_64 --set-disabled updates-x86_64
 RUN dnf config-manager --set-enabled cauldron-x86_64-nonfree cauldron-x86_64-nonfree
