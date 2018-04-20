@@ -8,6 +8,7 @@ RUN dnf clean all
 ADD https://raw.githubusercontent.com/unity-linux/unity-repos/master/Unity-Linux-mageia.repo /etc/yum.repos.d/Unity-Linux-mageia.repo
 ADD https://raw.githubusercontent.com/unity-linux/unity-repos/master/RPM-GPG-KEY-Unity /etc/pki/rpm-gpg/RPM-GPG-KEY-Unity
 RUN rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-Unity
+RUN sed -i 's%$basearch%i586%g' /etc/yum.repos.d/Unity-Linux-mageia.repo
 RUN dnf update -y
 RUN dnf -y install --setopt=install_weak_deps=False kernel-firmware basesystem-minimal 
 RUN dnf -y install --setopt=install_weak_deps=False acpi acpid dhcp-client wget dnf-plugins-core mock rpmdevtools rpm-sign cracklib-dicts rpmlint intltool
